@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,9 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="{% static 'test.css' %}">
 </head>
 <body>
-    <h1>test page in website application</h1>
-    <p>also this page is html file which contains this data</p>
+    <h1>this page is for testing the static files.</h1>
+    <p>this is initialization for use static files in project</p>
 </body>
 </html>
