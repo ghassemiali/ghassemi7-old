@@ -12,3 +12,6 @@ def contact_view(request):
 def elements_view(request):
     return render(request, 'website/elements.html')
 
+def test_view(request):
+    temp_dict = {'fname': 'Ali', 'lname': 'Ghassemi'}
+    return render(request, 'test.html', temp_dict)
