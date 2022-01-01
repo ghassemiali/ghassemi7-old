@@ -1,5 +1,4 @@
 from django.shortcuts import render
-from django.http import HttpResponse
 
 def test_view(request):
-    return HttpResponse('<h1>test page in website application</h1>')
+    return render(request, 'temp.html')
