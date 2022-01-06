@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load blog_tags %}
 {% block content %}
 
 
@@ -153,7 +154,7 @@
 
 					{% include 'blog/blog-ads.html' %}
 
-					{% include 'blog/blog-post-categories.html' %}
+					{% post_categories %}
 
 					{% include 'blog/blog-newsletter.html' %}
 
