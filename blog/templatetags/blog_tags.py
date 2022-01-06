@@ -21,3 +21,6 @@ def function_3():
     posts = Post.objects.filter(status=1)
     return posts
 
+@register .filter
+def snippet(value, arg=15):
+    return value[:arg] + '...'

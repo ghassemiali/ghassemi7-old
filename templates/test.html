@@ -18,7 +18,8 @@
     <h1>{{tp}}</h1>
     {% allposts as t %}
     {% for post in t %}
-        <p>{{post.counted_views}} for post .... {{post}}</p>
+        <p>{{post.counted_views}} for post .... {{post.content|snippet:10}}</p>
     {% endfor %}
+
 </body>
 </html>
