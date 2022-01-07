@@ -36,4 +36,15 @@ def blog_category(request, cat_name):
     context = {'posts': posts}
     return render(request, 'blog/blog-home.html', context)
 
-
+def blog_search(request):
+    x = datetime.timedelta(hours=3, minutes=30)
+    now = datetime.datetime.now().astimezone(datetime.timezone(x))
+    posts = Post.objects.filter(status=1, published_date__lte=now)   
+    #print(request)
+    #print(request.__dict__)
+    if request.method == 'GET':
+        #print(request.GET.get('s'))
+        if s := request.GET.get('s'):
+            posts = posts.filter(content__contains=s)
+    context = {'posts': posts}
+    return render(request, 'blog/blog-home.html', context)    
