@@ -6,14 +6,14 @@ def add_one_in_views(post):
     post.counted_views += 1
     post.save()
 
-def blog_home(request, cat_name=None, author_username=None):
+def blog_home(request, **kwargs):
     x = datetime.timedelta(hours=3, minutes=30)
     now = datetime.datetime.now().astimezone(datetime.timezone(x))
     posts = Post.objects.filter(status=1, published_date__lte=now)   
-    if cat_name:
-        posts = posts.filter(category__name=cat_name)
-    if author_username:
-        posts = posts.filter(author__username=author_username)
+    if kwargs.get('cat_name') != None:
+        posts = posts.filter(category__name=kwargs['cat_name'])
+    if kwargs.get('author_username') != None:
+        posts = posts.filter(author__username=kwargs['author_username'])
     context = {'posts': posts}
     return render(request, 'blog/blog-home.html', context)
 
