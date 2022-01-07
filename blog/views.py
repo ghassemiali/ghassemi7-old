@@ -6,10 +6,12 @@ def add_one_in_views(post):
     post.counted_views += 1
     post.save()
 
-def blog_home(request):
+def blog_home(request, cat_name=None):
     x = datetime.timedelta(hours=3, minutes=30)
     now = datetime.datetime.now().astimezone(datetime.timezone(x))
-    posts = Post.objects.filter(status=1, published_date__lte=now)    
+    posts = Post.objects.filter(status=1, published_date__lte=now)   
+    if cat_name:
+        posts = posts.filter(category__name=cat_name) 
     context = {'posts': posts}
     return render(request, 'blog/blog-home.html', context)
 
@@ -33,4 +35,3 @@ def blog_category(request, cat_name):
     return render(request, 'blog/blog-home.html', context)
 
 
-    
